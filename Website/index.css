@@ -1,0 +1,87 @@
+p{
+	color:purple;
+	font-size:20px;
+}
+.listitem{
+	color:red;
+	font-size: 20px;
+}
+
+.para{
+	color:green;
+	font-size: 1.4em;
+}
+
+#background{
+	background-color: rgb(215 185 158)
+}
+
+#button{
+	width:80px;
+	height:25px;
+	color:white;
+	background-color:black;
+	border-radius:15px;
+	font-size: 1.1em
+}
+
+#list {
+	width: 40%;
+	border-radius:10px;
+	border: 5px dashed green;
+	margin-bottom: 30px;
+	padding: 10px
+}
+
+.trivia{
+	width: 90%;
+	border:5px ridge yellow;
+	margin:30;
+}
+
+.text{
+	color:#2AFFE3;
+}
+
+.navpage{
+	list-style-type: none;
+	display: inline;
+	margin-right: 3em;
+	padding: 2px 5px;
+	text-align: center;
+}
+
+#navmenu{
+	text-align: center;
+	background-color: lightblue;
+	color: lightblue;
+}
+
+a:link{
+	color: blue;
+}
+
+a:visited{
+	color: blue;
+}
+
+a:hover{
+	color: purple;
+}
+
+a:active{
+	color: purple;
+}
+
+.rightside {
+float:right;
+width:48%;
+}
+
+.leftside {
+width:48%;
+}
+
+.clearfloat {
+clear:both;
+}

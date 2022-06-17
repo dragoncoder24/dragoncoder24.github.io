@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<title> Harry P. </title>
+		<script>
+
+		function banner(){
+		var text = confirm("Did You Really Want to Click on My Banner?");
+		return text;
+		}
+		
+		function answer(){
+		var radio = document.getElementsByName("trivia");
+		var selection = false;
+		var message = "";
+
+		for( var i = 0; i < radio.length; i++) {
+		if(radio[i].value == "yes" && radio[i].checked == true) {
+			selection = true;
+			}
+		}
+		if(selection == true) {
+			message = message + "<b><p style='color:green'>Way to go!</p></b>";}
+		else {
+			message = message + "<b><p style='color:red'>Try again.</p></b>";
+		}
+			document.getElementById("response").innerHTML = message;
+		}
+		</script>
+	</head>
+
+	<body id="background">
+
+		<a onclick="return banner()" href="https://sites.google.com/view/south-cal/home">
+		<center><h1>Harry Potter Fan</h1></center>
+	</a>
+
+		<center><nav>
+		<u id="navmenu">
+			<li class="navpage"> <a href="index.html"> Home</a></li>
+			<li class="navpage"><a href="Song.html"> Song</a></li>
+			<li class="navpage"><a href="Game.html"> Games</a></li>
+		</u>
+	</nav></center>
+	<div class="rightside">
+			<div class="trivia">
+				<h2>Harry Potter Trivia Question</h2>
+				<p class="para">How did Harry catch his first Snich?</p>
+
+				<form>
+					<div id="response"></div>
+					<input type="radio" name="trivia" value="no">he grabbed it from near Malfoy's ear <br>
+					<input type="radio" name="trivia" value="yes">he swallowed it <br>
+					<input type="radio" name="trivia" value="no">he got it while being chased by demetors <br>
+					<input type="radio" name="trivia" value="no">he got it with his hands like normal <br>
+					<input onclick="answer()" id="button" type="button" value="submit">
+				</form>
+			</div>
+
+			<img width="30%" src="https://thumbs.dreamstime.com/b/hogwarts-school-harry-potter-universal-studios-osaka-japan-one-famous-spot-tourists-who-visit-osaka-52461353.jpg" />
+			<img width="30%" src="https://thumbs.dreamstime.com/b/harry-potter-warner-brothers-studio-tour-london-uk-entrance-where-filmed-actual-film-series-movie-poster-sorcerers-164168768.jpg" />
+			
+		</div>
+
+		<div class="leftside">
+			<p>
+			<br>Aberto - Opens <span class="text">locked</span> doors
+			<br><i>Accio - Summons objects</i>
+			<br>Aguamenti - Summons water
+			<br>Alohomora - Unlocks objects
+			<br><u>Anapneo - Clears someone's airway</u>
+			<br>Aparecium - Reveals secret, written messages
+			<br>Ascendio - Propells someone into the air
+			<br><strong>Avada Kedavra - Also known as The Killing Curse, the most evil spell in the Wizarding World; one of three Unforgivable Curses; Harry Potter is the only known witch or wizard to survive it</strong>
+			<br>Avis - Conjures a small flock of birds
+			</p>
+
+			<div id="list">
+			<ol>
+				<li class="listitem">Hermione & Ron</li>
+				<li class="listitem">Harry & Ginny</li>
+				<li class="listitem">Lupin & Tonks</li>
+			</ol>
+			</div>
+		</div>
+		<div class="clearfloat">
+		</div>
+		<hr />
+			<center> Uydi <a href="https://sites.google.com/view/south-cal/home" target="_blank">My Favorite Website</a> </center>
+	</body>
+</html>
