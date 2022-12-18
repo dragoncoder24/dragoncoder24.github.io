@@ -1,0 +1,187 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="stylesheet.css">
+		<title> Comment Post </title>
+		
+	</head>
+	<body class="background">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-0.5" id="logo">
+					<img class="imgresponsive" id="logo" src="download.jpg"/>
+				</div>
+			</div> <!--end logo row-->
+
+			<div class="row">
+				<div class="col-sm-12" id="comment">Comments
+					<div class="col-sm-12 col-md-5" id="form">
+						<header id="header">Leave a Comment</header>
+						<div id="message"></div>
+						<form class="form-inline">
+							<label>Name:</label>
+							<input type="text" class="form-control" id="name2" placeholder="Enter Name"/>
+							<label>Color:</label>
+							<select id="bgcolor" class="form-control" oninput="">
+								<option>Select a Color</option>
+								<option>red</option>
+								<option>orange</option>
+								<option>yellow</option>
+								<option>green</option>
+								<option>blue</option>
+							</select>
+						</form>
+						<form id="Icons"class="form-inline">
+							<label>Icons:</label>
+
+							<input type="radio" name="icon" value="crystal.png">
+							<img src="crystal.png" class="icon">
+
+							<input type="radio" name="icon"value="pluto.png">
+							<img src="pluto.png" class="icon">
+
+							<input type="radio" name="icon"value="polar.png">
+							<img src="polar.png" class="icon">
+
+							<input type="radio" name="icon"value="unicorn.png">
+							<img src="unicorn.png" class="icon">
+
+						</form>
+						<label>Comment:</label>
+						<textarea id="text" class="form-control" rows="8"></textarea>
+						<input onclick="validate(), debug()" class="btn btn-primary" id="butn" type="button" value="Submit">
+					</div><!--end form row-->
+					<div id="show"></div>
+				</div>
+			</div><!--end comment row-->
+
+		</div> <!--end container div-->
+
+		<script> //start javascript
+			// Define
+
+			var array = [];
+
+			var message = document.querySelector("#message");
+
+			var name2 = document.querySelector("#name2");
+
+			var bgColor = document.querySelector("#bgcolor");
+
+			var icon = document.querySelectorAll("[name='icon']");
+
+			var text = document.querySelector("#text");
+
+			var Icons = document.querySelector("#Icons");
+
+			// DEBUG STUFF
+
+			function debug(){
+
+				console.log("Name is " + name2.value);
+
+				console.log("Color is " + bgColor.value);
+
+				for(var i=0;i<icon.length;i++) {
+					if(icon[i].checked == true) {
+						console.log(icon[i].value + "is checked");
+					} else {
+						console.log(icon[i].value + "is not checked");
+					}
+				}
+
+
+				console.log(icon);
+
+				console.log("Text is " + text.value);
+			}
+			//END DEBUG
+
+		function validate(){
+			//START LOGIC
+
+			var valid = true;
+			var validBg = true;
+			var validRadio = true;
+			var validText = true;
+
+			console.log(name2);
+			console.log(name2.value);
+
+			if (name2.value == "") {
+				name2.style.border = "2px solid red";
+				valid = false;
+			} else {
+				name2.style.border = "2px solid green";
+				valid = true;
+			}
+
+			if (bgColor.value == "Select a Color") {
+				bgColor.style.border = "3px solid red";
+				validBg = false;
+			} else {
+				bgColor.style.border = "3px solid green";
+				validBg = true;
+			}
+
+			for(var i=0; i < icon.length; i++){
+				if (icon[i].checked==true) {
+					Icons.style.border = "3px solid white";
+					validRadio = true;
+					break
+				} else {
+					Icons.style.border = "3px solid red";
+					validRadio = false;
+				}
+			}
+
+			if (text.value == "") {
+					text.style.border = "3px solid red";
+					validText = false
+			} else {
+					text.style.border = "3px solid green";
+					validText = true
+			}
+
+			if(!valid || !validRadio || !validBg || !validText){
+				message.innerHTML = "<h3 style='color:red'>You Missed a Spot!</h3>";
+			} else {
+				message.innerHTML = ""
+				save();
+			}
+		}
+
+		function save(){
+			var icon_value;
+			for(var i=0; i < icon.length; i++){
+				if(icon[i].checked == true){
+					icon_value = icon[i].value;
+				}
+			}
+			var storage = {name2: name2.value, text: text.value, icon: icon_value, bgColor: bgColor.value};
+			array.push(storage)
+			display();
+		}
+
+		function display(){
+			var show = document.querySelector("#show");
+			var post = "";
+			for(var i=0; i < array.length; i++){
+				post += "<div style='background-color:"+array[i].bgColor+";'>";
+				post += "<strong> "+array[i].name2+ "</strong>";
+				post += "<img src='"+array[i].icon+"' class='icon' /></br>";
+				post += array[i].text;
+				post += "<input type='checkbox' onclick='gone("+i+");'/>";
+				post += "</div>";
+			}
+			show.innerHTML = post;
+		}
+
+		function gone(index){
+			array.splice(index,1);
+			display();
+		}
+		</script><!--End Javascript-->
+	</body>
+</html>
